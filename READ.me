@@ -1,0 +1,166 @@
+# force_greaty - Custom Password Cracker Tool
+
+### A simple, customizable password-cracking tool built in Python. It supports both **dictionary** and **brute-force** attacks on password hashes (SHA-256 by default).
+
+---
+
+## Features
+
+- **Dictionary Attack**: Crack passwords using a wordlist.
+- **Brute-Force Attack**: Try every possible combination up to a certain length (e.g., 1 to 4 characters).
+- **Customizable**: Easily extend the tool to support more hash types and additional attack methods.
+- **Command-Line Interface (CLI)**: Run the tool interactively or with command-line arguments.
+
+---
+
+## Installation
+
+### 1. **Install Python** (if not already installed)
+
+You need **Python 3** installed on your system. You can check if Python is installed by running:
+
+```bash
+python3 --version
+If it's not installed, download and install it from the official Python website.
+
+2. Install Required Packages
+
+This tool requires the hashlib module for hashing (which is included in Python by default) and itertools for brute-forcing combinations. There's no external package installation required for the core functionality.
+
+However, if you want to use custom wordlists, you can download one from online sources like:
+
+SecLists Wordlists
+
+
+3. Clone the Repository
+
+To clone the repository, run the following command in your terminal:
+
+git clone https://github.com/<your-github-username>/force_greaty.git
+
+Navigate to the project directory:
+
+cd force_greaty
+
+
+---
+
+Usage
+
+You can use this password cracker either interactively or via command-line arguments.
+
+1. Interactive Mode
+
+Run the script directly to interactively choose an attack method:
+
+python force_greaty.py
+
+It will prompt you to choose between dictionary or brute-force attacks and ask for the necessary input, such as the hash to crack and the wordlist file (for dictionary attacks).
+
+2. Command-Line Mode
+
+You can also run the tool directly from the command line to automate the cracking process. Here’s the syntax:
+
+python force_greaty.py --crack <hash-to-crack> --method <attack-method> --wordlist <path-to-wordlist>
+
+Example:
+
+Dictionary Attack:
+
+
+python force_greaty.py --crack <hash> --method dictionary --wordlist /path/to/wordlist.txt
+
+Brute-Force Attack:
+
+
+python force_greaty.py --crack <hash> --method brute-force
+
+3. Arguments
+
+--crack <hash-to-crack>: The hash you want to crack (e.g., SHA-256).
+
+--method <attack-method>: The attack method to use (dictionary or brute-force).
+
+--wordlist <path-to-wordlist>: The path to the wordlist (only needed for dictionary attacks).
+
+
+4. Help Command
+
+To get more information on how to use the tool, run:
+
+python force_greaty.py --help
+
+
+---
+
+Example of Cracking a Password
+
+1. Dictionary Attack Example:
+
+
+
+Assume you have a hash and a wordlist (wordlist.txt):
+
+python force_greaty.py --crack <hash> --method dictionary --wordlist /path/to/wordlist.txt
+
+2. Brute-Force Attack Example:
+
+
+
+For brute-force cracking the hash:
+
+python force_greaty.py --crack <hash> --method brute-force
+
+
+---
+
+Customization
+
+1. Hash Types
+
+By default, the tool supports SHA-256. You can easily change the hash method by modifying the hash_method variable in the script.
+
+Example for MD5:
+
+hash_method = hashlib.md5  # For MD5 hashes
+
+2. Brute-Force Length
+
+You can extend the brute-force attack to support longer passwords. The current setup supports lengths from 1 to 4 characters:
+
+for length in range(1, 6):  # Try passwords from length 1 to 5
+
+3. Character Sets
+
+You can modify the character set used in the brute-force attack to include upper-case letters, special characters, etc. Here's an example to include more characters:
+
+chars = string.ascii_letters + string.digits + string.punctuation  # Include punctuation
+
+4. Multi-Threading for Faster Cracking
+
+For better performance, especially for brute-force attacks, you could implement multi-threading to speed up the process. You can use Python’s threading module for parallel processing.
+
+
+---
+
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+---
+
+Disclaimer
+
+This tool is intended for educational purposes only. Always use this tool responsibly and only on systems you have explicit permission to test. Unauthorized access to systems or data is illegal and unethical.
+
+
+---
+
+Author
+
+GreatyBlue
+GitHub: @GreatyBlue
+
+
+---
